@@ -5,11 +5,11 @@ document.addEventListener("DOMContentLoaded", function(){
  
     var grounds = {
         objects: [],
-        WIDTH: 30,
-        HEIGHT: 30,
+        WIDTH: 100,
+        HEIGHT: 100,
         SUBDIVISIONS: 30,
         COUNT: 10,
-        MOVE_SPEED: 1,
+        MOVE_SPEED: 2,
         farLeftDistance: 0,
         farRightDistance: 0
     };
@@ -17,9 +17,11 @@ document.addEventListener("DOMContentLoaded", function(){
 	var initScene = function (){
 		var scene = new BABYLON.Scene(engine);
 
-		var camera = new BABYLON.ArcRotateCamera("camera", Math.PI * 1.5, 1.3, 36, new BABYLON.Vector3(0, 0, 0), scene);
-		//camera.attachControl(canvas, true);
-        camera.detachControl(canvas);
+		// var camera = new BABYLON.ArcRotateCamera("", -Math.PI / 2, 1.08, 20, new BABYLON.Vector3(0,0,6), scene);
+		var camera = new BABYLON.ArcRotateCamera("camera", Math.PI * 1, 1.5, 100, new BABYLON.Vector3(5, 25, 1.5), scene);
+		camera.attachControl(canvas, true);
+		// detach control yang bikin kamera nya fixed
+        // camera.detachControl(canvas);
 		camera.setTarget(BABYLON.Vector3.Zero());
 
 		var light = new BABYLON.HemisphericLight("light", new BABYLON.Vector3(0, 1, 0). scene);
@@ -30,7 +32,8 @@ document.addEventListener("DOMContentLoaded", function(){
 		var groundMat = new BABYLON.StandardMaterial("ground", scene);
 		groundMat.diffuseTexture = new BABYLON.Texture("texture/desertTex.jpg", this.scene);
 		groundMat.specularColor = new BABYLON.Color3(0, 0, 0);
-  
+
+
         for(var i = 0; i < grounds.COUNT; i++){
             var tmpGround = new BABYLON.Mesh.CreateGround(
                 "ground", grounds.WIDTH, grounds.HEIGHT, grounds.SUBDIVISIONS, scene);
@@ -59,6 +62,8 @@ document.addEventListener("DOMContentLoaded", function(){
 	var scene = initScene();
 
 	engine.runRenderLoop(function (){
+		// untuk bikin dia jalan kiri terus
+		// jadi kalo count nya udah mentok, yang kiri dipindah ke kanan
         for(var i = 0; i < grounds.COUNT; i++){
             var selected = grounds.objects[i];
             selected.position.x -= grounds.MOVE_SPEED;
