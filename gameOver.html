@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="initScene.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body id="front">
+	<div id="topPad">
+		GAME OVER
+	</div>
+	<div id="score">
+		<script>
+		 	document.getElementById("score").innerHTML = "Final Score: " + localStorage.getItem("score");
+		</script>
+	</div>
+	<div>
+		<button type="button" onclick="location.href='index.html';">Play Again</button>
+	</div>
+</body>
+</html>

@@ -1,3 +1,8 @@
+@font-face{
+	font-family: fontTitle;
+	src: url(assets/comic_kings/ComicKings.ttf);
+}
+
 html, body{
 	width: 100%;
 	height: 100%;
@@ -5,11 +10,47 @@ html, body{
 	margin: 0;
 	padding: 0;
 }
-
+#topPad{
+	padding-top: 100px;
+}
+#front{
+	background-image: url("assets/background.png"); 
+	background-size: 100% 100%;
+	font-family: fontTitle;
+	color: #ffffff;
+	text-align: center;
+	font-size: 40px;
+}
 #renderCanvas{
 	width: 100%;
 	height: 100%;
 	padding: 0;
 	margin: 0;
 	touch-action: none;
+}
+
+#start{
+    color: white;
+    position: fixed;
+    width: 502px;
+    height: 42px;
+    left: calc(50% - 251px);
+    top: calc(50% - 21px);
+    text-align: center;
+}
+
+#start h1{
+    display: inline-block;
+    margin: 0;
+}
+
+#start.disable, #start.hidden{
+    display: none;
+}
+
+#score{
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    color: black;
 }
